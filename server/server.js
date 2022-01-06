@@ -12,3 +12,6 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
+db.once('open', () => {
+    app.listen(PORT, () => console.log(`Listening on localhost:${PORT}`));
+});
