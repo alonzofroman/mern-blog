@@ -13,8 +13,21 @@ const typeDefs = gql`
     type Post {
         _id: ID
         content: String
-        users: [User]
+        user: [User]
         comments: [Comment]
     }
-    
+
+    type Comment {
+        _id: ID
+        content: String
+        user: [user]
+        post: [Post]
+    }
+
+    type Query {
+        users: [User]
+        user: [User]
+        posts: [Post]
+        
+    }
 `
