@@ -28,6 +28,10 @@ const typeDefs = gql`
         users: [User]
         user: [User]
         posts: [Post]
-        
+        post: [Post]
+        comments: [Comment]
+        comment: [Comment]
     }
-`
+`;
+
+module.exports = typeDefs;
