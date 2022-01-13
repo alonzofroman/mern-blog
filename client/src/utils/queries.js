@@ -81,7 +81,25 @@ export const GET_POSTS = gql`
 export const GET_POST_BY_ID = gql`
     query post($postId: ID!){
         post(postId: $postId) {
-            
+            _id
+            title
+            content
+            user {
+                _id
+                username
+            }
+            comments {
+                _id
+                content
+                user{
+                    _id
+                    username
+                    post {
+                        _id
+                    }
+                }
+            }
         }
     }
 `
+
