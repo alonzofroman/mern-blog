@@ -103,3 +103,32 @@ export const GET_POST_BY_ID = gql`
     }
 `
 
+export const GET_COMMENTS = gql`
+    query comments{
+        _id
+        content
+        user {
+            _id
+            username
+        }
+        post {
+            _id
+        }
+    }
+`
+
+export const GET_COMMENT_BY_ID = gql`
+    query comment($commentId: ID!) {
+        comment(commentId: $commentId) {
+            _id
+            content
+            user {
+                _id
+                username
+            }
+            post {
+                _id
+            }
+        }
+    }
+`
