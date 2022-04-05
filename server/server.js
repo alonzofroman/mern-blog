@@ -11,7 +11,15 @@ const app = express();
 const PORT = process.env.PORT || 3001
 
 const session = require('express-session');
-const MongoDBStore = require('connect-mongodb-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
+const store = new MongoDBStore({
+    uri: process.env.MONGODB_URI || 'mongodb://localhost/mernblog',
+    collection: 'mySessions',
+});
+
+store.on('error', (err) => {
+    console.log(err);
+})
 
 const server = new ApolloServer({
     typeDefs,
