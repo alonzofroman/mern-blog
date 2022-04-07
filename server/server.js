@@ -21,6 +21,17 @@ store.on('error', (err) => {
     console.log(err);
 })
 
+const sess = {
+    secret: 'secret',
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+        secret: 'secret'
+    },
+    resave: false,
+    saveUninitialized: true,
+    store: store,
+};
+
 const server = new ApolloServer({
     typeDefs,
     resolvers,
@@ -33,6 +44,7 @@ const server = new ApolloServer({
 })();
 
 app.use(compression());
+app.use(session(sess));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
